@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>苹果菜单</title>
+	<style>
+		body {margin:0;}
+		#div1 {text-align:center; position:absolute; bottom:0; width:100%;}
+	</style>
+
+</head>
+
+<body>
+<div id="div1">
+	<a href="#"><img src="images/1.png" width="60px"></a>
+	<a href="#"><img src="images/2.png" width="60px"></a>
+	<a href="#"><img src="images/3.png" width="60px"></a>
+	<a href="#"><img src="images/4.png" width="60px"></a>
+	<a href="#"><img src="images/5.png" width="60px"></a>
+</div>
+
+
+<script>
+document.addEventListener('mousemove',function(e){
+	var Event=e;
+	var Div=document.querySelector('#div1');
+	var Img=document.querySelectorAll('#div1 img');
+	var d=0;
+	var iMax=200;
+	function getDistance(obj)
+	{
+		return Math.sqrt
+		(
+				Math.pow(obj.offsetLeft+Div.offsetLeft-Event.clientX+obj.offsetWidth/2, 2)+
+				Math.pow(obj.offsetTop+Div.offsetTop-Event.clientY+obj.offsetHeight/2, 2)
+		);
+	}
+
+	for(i=0;i<Img.length;i++)
+	{
+		d=getDistance(Img[i]);
+		d=Math.min(d, iMax);
+		Img[i].width=((iMax-d)/iMax)*64+60;
+	}
+
+})
+
+</script>
+</body>
+</html>

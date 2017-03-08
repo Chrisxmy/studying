@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .small{
+            height: 180px;
+            width: 180px;
+        }
+        #small{
+            height: 180px;
+            width: 180px;
+            position: relative;
+            overflow: hidden;
+        }
+        #small span{
+            width: 100px;
+            height:100px;
+            background: yellow;
+            opacity: 0.5;
+            position: absolute;
+            top: 0;
+            display: none;
+
+        }
+
+        .big{
+            height: 900px;
+            width: 900px;
+        }
+        #big{
+            height: 400px;
+            width: 400px;
+            position: absolute;
+            left: 250px;
+            top: 50px;
+            overflow: hidden;
+            display: none;
+        }
+        #big img{
+            position: absolute;
+            top:0;
+            left: 0;
+        }
+
+    </style>
+</head>
+<body>
+<div id="small">
+    <img class="small" src="images/123.jpg">
+    <span></span>
+</div>
+<div id="big">
+    <img class="big" src="images/123.jpg">
+</div>
+
+
+<script>
+    var small = document.querySelector('#small'),
+            span = document.querySelector('#small span'),
+            big = document.querySelector('#big'),
+             Img = document.querySelector('#big img');
+    small.addEventListener('mouseover',function(){
+            span.style.display = 'block';
+         big.style.display = 'block'
+    });
+    small.addEventListener('mouseout',function(){
+        span.style.display = 'none';
+        big.style.display = 'none'
+    });
+    small.addEventListener('mousemove',function(e){
+       var L = e.clientX - small.offsetLeft - span.offsetWidth/2;
+        var T = e.clientY - small.offsetTop - span.offsetHeight/2;
+        if(L<0){
+            L = 0;
+        }else if(L>small.offsetWidth - span.offsetWidth){
+            L = small.offsetWidth - span.offsetWidth
+        }
+        if(T<0){
+            T = 0;
+        }else if(T>small.offsetHeight - span.offsetHeight){
+            T = small.offsetHeight - span.offsetHeight
+        }
+        span.style.left = L + 'px';
+        span.style.top = T + 'px';
+        var scaleX = L/(small.offsetWidth - span.offsetWidth),
+        scaleY = T/(small.offsetHeight - span.offsetHeight);
+
+
+        Img.style.left = - scaleX * (Img.offsetWidth - big.offsetWidth)+'px';
+        Img.style.top = - scaleY * (Img.offsetHeight - big.offsetHeight)+ 'px';
+    })
+</script>
+</body>
+</html>
