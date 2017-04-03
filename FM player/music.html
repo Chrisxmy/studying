@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="referrer" content="never">
+	<title>Document</title>
+	<link rel='stylesheet' href='./music.css'>
+	<link rel='stylesheet' href='font/iconfont.css'>
+	<link rel='stylesheet' href='font1/iconfont.css'>
+	<link rel='stylesheet' href='reset.css'>
+</head>
+<body>
+
+<audio id="music" >你的浏览器不支持喔！</audio>
+
+<div id='musicPlay'>
+  <header id='header'>
+	  <div class='meun'>
+	      <span class='iconfont icon-wxmeun'>
+	</div>
+	 <div class='channel'>	    
+        <ul class='channel-list'></ul>
+    </div>	 
+	 <span class='iconfont icon-share'>	</span>
+  </header>
+  <section class='brief'>
+	  <img class='img' src=''>
+	  <h3 class='songTitle'></h3>
+      <h6 class='singer'></h6>
+	  <span class='iconfont icon-heat'></span>  
+	  <div class='lyric-ct'>
+      <ul class='lyric'>
+	
+      </ul>
+</div>  
+  </section>
+ 
+
+<section class='icon'>
+
+<div class='progress-ct' >
+<span class='current'>00:00</span>
+<div class='progress'>
+	<div class='line'></div>
+	<div class='handle'></div>
+</div>
+<span class='duration'>00:00</span>
+</div>
+
+
+<div class='playAndpause'>
+		<span class="iconfont icon-play"></span>
+</div>
+<div class='forward'>
+	<span class='iconfont icon-fastforward'></span>
+</div>
+
+
+</section>
+
+
+</div>
+<span class='iconfont icon-random'></span>
+<span class='iconfont icon-repeat'></span>
+
+
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+	
+	<script>
+	
+
+  function musicPlay(){
+	  this.audioObject = document.querySelector('#music')
+	   this.audioObject.volume = 0.2
+	  this.channels = ''
+	  this.auto = true
+	  this.currentTiemSec = 0
+       this.init()
+
+  }
+  musicPlay.prototype ={
+
+	  	init:function(){
+
+		    this.getChannels()
+			 this.play()
+			 this.pause()
+		   	this.next()
+			this.channelList()
+			this.timeUpdate()
+			 this.clickPresent()
+		  },
+		  render:function(){
+		     $('#music').attr('src',this.url)
+            $('.songTitle').text(this.title)
+			$('.singer').text(this.artist)
+			$('.img').attr('src',this.picture)
+		  },
+
+
+		  channelList:function(){
+				var _this = this,
+				$channelList = $('.channel-list')
+				$('.meun').on('click',function(){
+					if($channelList.css('left') === '80px'){
+					$('.meun span').attr('class','iconfont icon-jiantou')
+							$channelList.animate({
+                            left:'1',
+					})
+					
+					}else{
+						$('.meun span').attr('class','iconfont icon-wxmeun')
+						$channelList.animate({
+                             left:'80px',
+					})
+					}
+			})		
+		  },
+    play:function(){
+		var _this = this
+			  $('.icon-play').on('click',function(){
+			   $('.icon-play').attr('class','iconfont icon-pause')
+			   _this.audioObject.play()
+			   _this.durationTime()	
+			   _this.pause()
+		})
+	},
+	pause:function(){
+		var _this = this
+			$('.icon-pause').on('click',function(){	
+			$(this).attr('class','iconfont icon-play')
+            _this.audioObject.pause()
+			  _this.play()
+		})
+	},
+
+	next:function(){                             //下一首
+		var _this = this
+		$('.icon-fastforward').on('click',function(){
+			$(".lyric").empty();
+			$('#music').attr('src','') 
+			  	_this.getSong()
+		})
+	},
+	getChannelsItem(){
+      var _this = this;
+	  $('.channel-list').on('click','li',function(){
+              _this.channels = $(this).attr('channel_id')			
+			  _this.getSong()
+			  _this.auto = false
+	  })
+
+	},
+	 getChannels:function(){
+		 	var _this = this
+		 $.ajax({
+            url: "http://api.jirengu.com/fm/getChannels.php",
+            method: "get",
+            dataType: "json",
+        }).done(function (e) { 
+             var html = ''
+			for(let i=0;i<e.channels.length;i++){
+               html += '<li>'+e.channels[i].name+'</li>'
+			} 
+			$('.channel-list').append(html)
+			$('.channel-list li').each(function(index,value){
+				  $(this).attr('channel_id',e.channels[index].channel_id)
+			})      
+			 _this.channels = e.channels[7].channel_id
+			_this.getChannelsItem()
+			 _this.getSong()
+        })
+
+	},
+	getSong:function(){
+		var _this = this
+	 $.ajax({
+            url: "http://api.jirengu.com/fm/getSong.php",
+            method: "get",
+            dataType: "json",
+			data:{channel:_this.channels}
+        }).done(function (event) {                          
+            var ret = event.song[0];
+			 _this.url =  ret.url
+             _this.lyric = ret.sid
+			 _this.title = ret.title
+			 _this.picture = ret.picture
+			 _this.artist = ret.artist
+	        _this.render()
+			$(".lyric").empty();
+			_this.getLyric()
+			if(_this.auto === false){
+				  _this.audioObject.play()
+			}	
+        }).fail(function () {
+            
+        });
+
+},
+		getLyric:function(){
+			var _this =this
+		 $.ajax({
+            url: "http://api.jirengu.com/fm/getLyric.php",
+            method: "get",
+            dataType: "json",
+			data:{sid:_this.lyric}
+        }).done(function (e) {    
+            var lyricStr = e.lyric;
+         var lyricArr = lyricStr.split('\n');
+		 var html = '';
+		 _this.lyricTimeArr = []
+		  for(var i=0;i<lyricArr.length;i++){
+			  var lyric = lyricArr[i].slice(10,48)
+			  if(!lyric){
+				  lyric = '-'
+			  }
+			    html +='<li class=lyric'+i+'>'+lyric+'</li>';
+				_this.getLyricTime(lyricArr[i])
+		  }	
+		  $('.lyric').append(html)
+                      
+        }).fail(function(){
+			alert('没有歌词')
+		})
+
+	},
+	getLyricTime:function(Lyric){
+          var min = parseFloat(Lyric.slice(1,3))
+		  var sec = Math.round(min*60+parseFloat(Lyric.slice(4,9)))
+		  this.lyricTimeArr.push(sec)
+	},
+
+	timeUpdate:function() {
+    var _this = this;
+    this.audioObject.ontimeupdate =  function() {
+        if (_this.currentTiemSec != Math.round(_this.audioObject.currentTime)) {
+            _this.currentTiemSec = Math.round(_this.audioObject.currentTime);
+            _this.lyricBoxMove(_this.currentTiemSec);
+
+			_this.currentTime()
+		    _this.autoPresent()
+		
+        }
+    }
+
+},
+currentTime:function(){
+		var current = this.audioObject.currentTime
+		    var min = Math.floor(current/60)
+		    var sec = Math.round(current - min*60)
+			if(min === 0 &&sec<10){
+					  $('.current').text('00'+':'+'0'+sec)
+			}else if(min === 0 &&sec>=10){
+					 $('.current').text('00'+':'+sec)
+			}else if(min > 0 && sec<10){
+				$('.current').text('0'+min+':'+'0'+sec)
+			}
+			else if(min > 0 && sec>=10){
+				$('.current').text('0'+min+':'+sec)
+			}
+},
+
+  lyricBoxMove:function(num) {
+    for (var i = 1; i < this.lyricTimeArr.length; i++) {
+        if (num === this.lyricTimeArr[i]) {
+            var Top = 80 - i * 40 + 'px';
+			var lightClass = '.lyric' + i;
+			 $(lightClass).siblings().removeClass('light');
+            $(lightClass).addClass('light');
+			$('.lyric').animate({
+                top: Top
+            }, 100);
+        }
+    }
+},
+    clickPresent:function(){
+		var _this = this
+         $('.progress').on('click',function(e){
+			var distance = e.clientX -  $(this).offset().left 
+			var per = distance / $(this).width()
+		  $('.progress .line').css({width: distance})	
+			  _this.audioObject.currentTime = _this.audioObject.duration*per
+
+		 })
+
+	},
+	autoPresent:function(){
+        var length = this.audioObject.currentTime/this.audioObject.duration*100
+		$('.progress .line').css({width:length+'%'})
+		if(length === 100){
+			this.getSong()
+		}
+
+	},
+	durationTime:function(){
+		var duration = this.audioObject.duration
+		var min = Math.floor(duration/60)
+		var sec = Math.round(duration - min*60)
+			if(sec<10){
+					  $('.duration').text('0'+min+':'+'0'+sec)
+			}else if(sec>=10){
+					$('.duration').text('0'+min+':'+sec)
+			}
+				
+	}
+  }
+
+  new musicPlay()
+  
+
+	
+	</script>
+	
+	
+	
+	
+	</body>
+</html>

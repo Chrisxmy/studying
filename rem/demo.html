@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<meta name = 'viewport' content='width=device-width,user-scalable=no'> 
+	<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel='stylesheet' href='./reset.css'>
+	<style>
+	*{
+		margin: 0;
+		padding:0;
+	}
+	#header{
+		height:2rem;
+		background:#12f1f5;
+		position:relative
+	}
+	#header a{
+		width:2.2rem;
+		height:2rem;
+		position:absolute;
+		top: 0;
+		text-align: center;
+		line-height: 2rem;
+	}
+	#header .meun{
+		left:0 
+	}
+	#header .repeat{
+		right:0 
+	}
+	#header span{
+		color:#fff;
+		font-size:0.7rem
+	}
+	h1{
+		text-align: center;
+		font-size: 0.8rem;
+		line-height: 2rem;
+		color:#fff;	
+	}
+	h1 span{
+		margin-right: 0.3rem
+	}
+	#nav{
+		height:2rem;
+		background: #fdfdfd;
+	
+	}
+	#nav a{
+		text-align: center;
+		float: left;
+		width: 25%;
+		line-height: 2rem;
+		font-size:0.6rem
+	}
+	#nav .active{
+		color:red;
+	}
+	#nav .iconBox{
+          width: 0.6rem;
+		  display: inline-block;
+		  vertical-align: middle
+	}
+	#nav .iconBox span{
+			float: left;
+	}
+	.glyphicon-user{
+			top:0.1rem;
+			left:0.1rem
+	}
+	.play{	
+		height:6rem;
+	}
+	
+	.play li{
+		width: 25%;
+		float: left;
+		text-align: center;
+		font-size: 0.6rem;
+		margin-top: 0.5rem
+		
+	}
+	.play li div{
+		width: 1.5rem;
+		height: 1.5rem;
+		margin: 0 auto;
+		line-height: 1.5rem;
+		margin-bottom: 0.2rem;
+		border-radius: 50%;
+		color: #fff;
+	}
+	.play li .food{background:#f64e0f}
+	.play li .film{background:#fa4f4f }
+	.play li .home{background: #7d0b7c}
+	.play li .game{background: #f7d07c}
+	.play li .home{background: #fa4f4f}
+	.play li .plane{background:#0deff3 }
+	.play li .music{background:#f64e0f }
+	.play li .globe{background: #0deff3
+	}
+
+    .line{
+		width: 100%;
+		height: 0.4rem;
+		background: #eee;
+	}
+	.like{
+		font-size: 0.6rem;
+		margin-left: 0.3rem;
+		height: 1rem;
+		line-height: 1rem;
+		border:1px solid #eee;
+		color: #000
+	}
+	.like span{
+		color: red;
+		font-size: 0.6rem;
+		margin-right: 0.2rem
+	}
+
+	.list li{
+		border-bottom: 1px solid #ccc;
+		box-sizing: border-box;
+		height: 6rem;
+	}
+	.list img{
+		width: 4.5rem;
+		height: 4.5rem;
+		float: left
+	}
+	.list a{
+		padding:0.5rem;
+		height: 5rem;
+		display: block
+	}
+	.list .spanWrap{
+		float: right;
+		width: 8rem;
+	}
+	.title{
+		font-size: 0.5rem;
+		line-height: 1rem;
+		color:#333;
+		margin-top: 0.1rem;
+		display: block
+	}
+	.price{
+		display: block;
+		font-size: 0.9rem;
+		line-height:2rem ;
+		color: red;
+	}
+	
+	.comment{
+		font-size: 0.5rem;
+		line-height: 1rem;
+		display: block
+	}
+       
+	</style>
+</head>
+<body>
+   <header id='header'> 
+	   <a class='task' href='javascript:;'><span class='glyphicon glyphicon-tasks'></span></a>
+	   <h1><span class='glyphicon glyphicon-lock'></span>Chris</h1>
+  	   <a class='repeat' href='javascript:'><span class='glyphicon glyphicon-repeat'></span></a>
+   </header>
+   <nav id='nav'>
+	   <a href='' class='active'>团购<span class='glyphicon glyphicon-chevron-down'></span></a>
+	   <a href=''>商家</a>
+	   <a href=''>更多
+		   <span class='iconBox'>
+		     <span class='glyphicon glyphicon-chevron-up'></span>
+			 <span class='glyphicon glyphicon-chevron-down active'></span>
+			</span>
+		</a>
+	   <a href=''>我的<span class='glyphicon glyphicon-user'></span></a>
+   </nav>
+
+   <ul class='play'>
+	   <li><div class='food'><span class='glyphicon glyphicon-cutlery'></span></div>美食</li>
+	   <li><div class='film'><span class='glyphicon glyphicon-film'></span></div>电影</li>
+	   <li><div class='home'><span class='glyphicon glyphicon-home'></span></div>住宿</li>
+	   <li><div class='game'><span class='glyphicon glyphicon-glass'></span></div>娱乐</li>
+	   <li><div class='home'><span class='glyphicon glyphicon-home'></span></div>外卖</li>
+	   <li><div class='plane'><span class='glyphicon glyphicon-plane'></span></div>车票</li>
+	   <li><div class='music'><span class='glyphicon glyphicon-music'></span></div>KTV</li>
+	   <li><div class='globe'><span class='glyphicon glyphicon-globe'></span></div>周边</li>
+   </ul>
+   <div class='line'></div>
+   <div class='like'><span class='glyphicon glyphicon-heart'></span>猜你喜欢</div>
+   <ul class='list'>
+	   <li>
+		   <a href=''>
+			   <img src='timg.jpg'>
+			   <span class='spanWrap'>
+				   <span class='title'>千椒百味碳火烤全鱼发源于重庆万州的一种特色美食</span>
+				   <span class='price'>￥120</span>
+				   <span class='comment'>好评99% 2343人</span>
+			   </span>
+		   </a>
+	   </li>
+	   <li>
+		   <a href=''>
+			   <img src='timg.jpg'>
+			   <span class='spanWrap'>
+				   <span class='title'>千椒百味碳火烤全鱼发源于重庆万州的一种特色美食</span>
+				   <span class='price'>￥120</span>
+				   <span class='comment'>好评99% 2343人</span>
+			   </span>
+		   </a>
+	   </li>
+	   <li>
+		   <a href=''>
+			   <img src='timg.jpg'>
+			   <span class='spanWrap'>
+				   <span class='title'>千椒百味碳火烤全鱼发源于重庆万州的一种特色美食</span>
+				   <span class='price'>￥120</span>
+				   <span class='comment'>好评99% 2343人</span>
+			   </span>
+		   </a>
+	   </li>
+	   <li>
+		   <a href=''>
+			   <img src='timg.jpg'>
+			   <span class='spanWrap'>
+				   <span class='title'>千椒百味碳火烤全鱼发源于重庆万州的一种特色美食</span>
+				   <span class='price'>￥120</span>
+				   <span class='comment'>好评99% 2343人</span>
+			   </span>
+		   </a>
+	   </li>
+   </ul>
+
+ 
+
+	<script>
+	(function(){
+		var html = document.documentElement;
+	    var width = html.getBoundingClientRect().width;
+		html.style.fontSize = width/15 +'px'
+	})()
+
+	</script>
+	
+</body>
+</html>
