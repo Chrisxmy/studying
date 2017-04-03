@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .box1{
+            height: 300px;
+            width:300px;
+            background: red;
+            cursor: pointer;
+            position:absolute;
+        }
+        .box2{
+            height: 300px;
+            width:300px;
+            background: blue;
+            cursor: pointer;
+            position: absolute;
+            top:0;
+            left:330px;
+        }
+    </style>
+</head>
+<body>
+<div class="box1"></div>
+<div class="box2"></div>
+
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script>
+   var Drag = (function() {
+
+    function _drag(opt) {
+        this.$target = opt.id
+        this.settings = {
+              getChange:function(){
+           opt.id.css({background:'yellow'})
+          }
+    }
+        $.extend(this.settings,opt)
+        this.init()
+    }
+
+    _drag.prototype = {
+        init: function () {
+            this.disX = 0;
+            this.diaY = 0;
+            this.bind();
+
+        },
+        bind:function(){
+            var _this = this;
+            this.$target.on('mousedown', function (e) {
+                _this.Down(e)
+                _this.settings.getChange()
+                _this.$target.on('mousemove',function(e){
+                    _this.move(e)
+                _this.$target.on('mouseup',function(){
+                    _this.up()
+                })
+
+                })
+            })
+        },
+        Down: function (e){
+            this.disX = e.clientX - this.$target.offset().left
+            this.disY = e.clientY - this.$target.offset().top
+        },
+        move:function(e){
+            var L =  e.clientX-this.disX
+            var T =  e.clientY-this.disY
+            if(L<0){
+                L = 0
+            }else if(L>$(document).width()-this.$target.width()){
+                L = $(document).width()-this.$target.width()
+            }
+            this.$target.css({left:L})
+            this.$target.css({top:T})
+        },
+        up:function(){
+            this.$target.unbind('mouseup')
+            this.$target.unbind('mousemove')
+        }
+    }
+
+  return {
+       init:function(opt){
+           new _drag(opt)
+     }
+    }
+    })()
+
+    var drag1 = Drag.init({
+              id: $('.box1'),
+               getChange:function(){
+                   this.id.css({background:'black'})
+               }
+    })
+   var drag2 = Drag.init({
+       id: $('.box2')
+   })
+
+
+
+
+</script>
+
+
+</body>
+</html>
