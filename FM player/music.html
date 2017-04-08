@@ -7,107 +7,120 @@
 	<link rel='stylesheet' href='./music.css'>
 	<link rel='stylesheet' href='font/iconfont.css'>
 	<link rel='stylesheet' href='font1/iconfont.css'>
+		<link rel='stylesheet' href='font2/iconfont.css'>
 	<link rel='stylesheet' href='reset.css'>
 </head>
 <body>
-
 <audio id="music" >你的浏览器不支持喔！</audio>
-
-<div id='musicPlay'>
+<section id='musicPlay'>
   <header id='header'>
 	  <div class='meun'>
 	      <span class='iconfont icon-wxmeun'>
 	</div>
 	 <div class='channel'>	    
-        <ul class='channel-list'></ul>
+         <ul class='channel-list'></ul>
     </div>	 
-	 <span class='iconfont icon-share'>	</span>
+	    <span class='iconfont icon-share'></span>
   </header>
-  <section class='brief'>
+<section class='brief'>
 	  <img class='img' src=''>
 	  <h3 class='songTitle'></h3>
       <h6 class='singer'></h6>
 	  <span class='iconfont icon-heat'></span>  
 	  <div class='lyric-ct'>
-      <ul class='lyric'>
-	
-      </ul>
-</div>  
-  </section>
- 
-
-<section class='icon'>
-
-<div class='progress-ct' >
-<span class='current'>00:00</span>
-<div class='progress'>
-	<div class='line'></div>
-	<div class='handle'></div>
-</div>
-<span class='duration'>00:00</span>
-</div>
-
-
-<div class='playAndpause'>
-		<span class="iconfont icon-play"></span>
-</div>
-<div class='forward'>
-	<span class='iconfont icon-fastforward'></span>
-</div>
-
-
+      	<ul class='lyric'></ul>
+	  </div>  
 </section>
 
+<section class='volume' >
+		<span class='iconfont icon-yinliang'></span>
+	<div class='volume-ct'>
+		<div class='line'></div>
+		<div class='handle'></div>
+	</div>
+</section>
+<section class='icon'>
+	<div class='progress-ct' >
+		<span class='current'>00:00</span>
+	<div class='progress'>
+		<div class='line'></div>
+	</div>
+		<span class='duration'>00:00</span>
+	</div>
+	<div class='playAndpause iconfont icon-play'>		
+	</div>
+	<div class='forward iconfont icon-fastforward'>
+</div>
+</section>
 
 </div>
-<span class='iconfont icon-random'></span>
-<span class='iconfont icon-repeat'></span>
-
-
-<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script src='../封装组件/jquery.min.js'></script>
 	
 	<script>
 	
 
   function musicPlay(){
 	  this.audioObject = document.querySelector('#music')
-	   this.audioObject.volume = 0.2
 	  this.channels = ''
-	  this.auto = true
-	  this.currentTiemSec = 0
-       this.init()
+	  this.currentTiemSec = 0;
+      this.init()
 
   }
   musicPlay.prototype ={
-
 	  	init:function(){
-
+ 			this.controlVolume()
 		    this.getChannels()
-			 this.play()
-			 this.pause()
+			this.play()
+			this.pause()
 		   	this.next()
 			this.channelList()
 			this.timeUpdate()
-			 this.clickPresent()
+			this.clickPresent()
 		  },
-		  render:function(){
-		     $('#music').attr('src',this.url)
+		  render:function(){                         //渲染歌曲信息
+		    $('#music').attr('src',this.url)
             $('.songTitle').text(this.title)
 			$('.singer').text(this.artist)
 			$('.img').attr('src',this.picture)
 		  },
 
+   		 play:function(){                   //播放
+			var _this = this
+			   $('.icon-play').on('click',function(){
+			   $('.icon-play').attr('class','playAndpause iconfont icon-pause')
+			   _this.audioObject.play()
+			   _this.durationTime()	
+			   _this.pause()
+			   _this.auto = true
+		})
+	},
+		pause:function(){                            //暂停
+			var _this = this
+			  $('.icon-pause').on('click',function(){	
+			  $(this).attr('class','playAndpause iconfont icon-play')
+              _this.audioObject.pause()
+			  _this.play()
+		})
+	},
 
-		  channelList:function(){
-				var _this = this,
+		next:function(){                             //控制下一首
+		    var _this = this
+		      $('.icon-fastforward').on('click',function(){
+			  $(".lyric").empty();
+			  $('#music').attr('src','') 
+			  _this.getSong()
+		})
+	}, 
+
+		  channelList:function(){                       //控制专辑列表
+			 var _this = this,
 				$channelList = $('.channel-list')
-				$('.meun').on('click',function(){
-					if($channelList.css('left') === '80px'){
-					$('.meun span').attr('class','iconfont icon-jiantou')
+				  $('.meun').on('click',function(){
+					  if($channelList.css('left') === '80px'){
+					  $('.meun span').attr('class','iconfont icon-jiantou')
 							$channelList.animate({
                             left:'1',
 					})
-					
 					}else{
 						$('.meun span').attr('class','iconfont icon-wxmeun')
 						$channelList.animate({
@@ -116,42 +129,15 @@
 					}
 			})		
 		  },
-    play:function(){
-		var _this = this
-			  $('.icon-play').on('click',function(){
-			   $('.icon-play').attr('class','iconfont icon-pause')
-			   _this.audioObject.play()
-			   _this.durationTime()	
-			   _this.pause()
-		})
-	},
-	pause:function(){
-		var _this = this
-			$('.icon-pause').on('click',function(){	
-			$(this).attr('class','iconfont icon-play')
-            _this.audioObject.pause()
-			  _this.play()
-		})
-	},
-
-	next:function(){                             //下一首
-		var _this = this
-		$('.icon-fastforward').on('click',function(){
-			$(".lyric").empty();
-			$('#music').attr('src','') 
-			  	_this.getSong()
-		})
-	},
-	getChannelsItem(){
-      var _this = this;
-	  $('.channel-list').on('click','li',function(){
-              _this.channels = $(this).attr('channel_id')			
-			  _this.getSong()
-			  _this.auto = false
+		  getChannelsItem(){                                   //控制专辑分类
+             var _this = this;
+	             $('.channel-list').on('click','li',function(){
+                    _this.channels = $(this).attr('channel_id')			
+			        _this.getSong()
 	  })
 
-	},
-	 getChannels:function(){
+	}, 
+	 	  getChannels:function(){              //获取歌曲专辑
 		 	var _this = this
 		 $.ajax({
             url: "http://api.jirengu.com/fm/getChannels.php",
@@ -159,22 +145,22 @@
             dataType: "json",
         }).done(function (e) { 
              var html = ''
-			for(let i=0;i<e.channels.length;i++){
-               html += '<li>'+e.channels[i].name+'</li>'
-			} 
-			$('.channel-list').append(html)
-			$('.channel-list li').each(function(index,value){
-				  $(this).attr('channel_id',e.channels[index].channel_id)
+			   for(let i=0;i<e.channels.length;i++){
+                  html += '<li>'+e.channels[i].name+'</li>'
+			 } 
+			   $('.channel-list').append(html)
+			   $('.channel-list li').each(function(index,value){
+				   $(this).attr('channel_id',e.channels[index].channel_id)
 			})      
-			 _this.channels = e.channels[7].channel_id
-			_this.getChannelsItem()
-			 _this.getSong()
+			      _this.channels = e.channels[7].channel_id
+			      _this.getChannelsItem()
+			      _this.getSong()
         })
 
 	},
-	getSong:function(){
-		var _this = this
-	 $.ajax({
+	      getSong:function(){                    //获取歌曲
+		    var _this = this
+	      $.ajax({
             url: "http://api.jirengu.com/fm/getSong.php",
             method: "get",
             dataType: "json",
@@ -189,7 +175,7 @@
 	        _this.render()
 			$(".lyric").empty();
 			_this.getLyric()
-			if(_this.auto === false){
+			if(_this.auto){
 				  _this.audioObject.play()
 			}	
         }).fail(function () {
@@ -197,7 +183,7 @@
         });
 
 },
-		getLyric:function(){
+		getLyric:function(){                          //获取歌词数据
 			var _this =this
 		 $.ajax({
             url: "http://api.jirengu.com/fm/getLyric.php",
@@ -206,46 +192,61 @@
 			data:{sid:_this.lyric}
         }).done(function (e) {    
             var lyricStr = e.lyric;
-         var lyricArr = lyricStr.split('\n');
-		 var html = '';
-		 _this.lyricTimeArr = []
-		  for(var i=0;i<lyricArr.length;i++){
-			  var lyric = lyricArr[i].slice(10,48)
-			  if(!lyric){
-				  lyric = '-'
-			  }
-			    html +='<li class=lyric'+i+'>'+lyric+'</li>';
-				_this.getLyricTime(lyricArr[i])
-		  }	
-		  $('.lyric').append(html)
+            _this.renderLyric(lyricStr)
                       
         }).fail(function(){
-			alert('没有歌词')
+			 $('.lyric').append('<li>没有歌词</li>')
 		})
 
 	},
-	getLyricTime:function(Lyric){
-          var min = parseFloat(Lyric.slice(1,3))
-		  var sec = Math.round(min*60+parseFloat(Lyric.slice(4,9)))
-		  this.lyricTimeArr.push(sec)
+	    renderLyric:function(lyricStr){              //处理歌词数据并渲染
+		     var lyricArr = lyricStr.split('\n'),
+	             html = '';
+		         this.lyricTimeArr = [];
+		  for(var i=0;i<lyricArr.length;i++){
+			var lyric = lyricArr[i].slice(10,48)
+			    if(!lyric){
+				  lyric = '-'
+			  }
+			    html +='<li class=lyric'+i+'>'+lyric+'</li>';
+				this.getLyricTime(lyricArr[i])
+		  }	
+		  $('.lyric').append(html)
+        
+	},
+		getLyricTime:function(Lyric){                            //处理数据获取歌词对应时间
+            var min = parseFloat(Lyric.slice(1,3))
+		    var sec = Math.round(min*60+parseFloat(Lyric.slice(4,9)))
+		    this.lyricTimeArr.push(sec)
 	},
 
-	timeUpdate:function() {
-    var _this = this;
-    this.audioObject.ontimeupdate =  function() {
-        if (_this.currentTiemSec != Math.round(_this.audioObject.currentTime)) {
-            _this.currentTiemSec = Math.round(_this.audioObject.currentTime);
-            _this.lyricBoxMove(_this.currentTiemSec);
-
-			_this.currentTime()
-		    _this.autoPresent()
-		
+		timeUpdate:function() {                                    //监听歌曲时间更新事件
+             var _this = this;
+             this.audioObject.ontimeupdate =  function() {
+                 if (_this.currentTiemSec != Math.round(_this.audioObject.currentTime)) {
+                     _this.currentTiemSec = Math.round(_this.audioObject.currentTime);
+                     _this.lyricBoxMove(_this.currentTiemSec);
+			         _this.currentTime()
+		             _this.autoPresent()
         }
     }
 
 },
-currentTime:function(){
-		var current = this.audioObject.currentTime
+ 		lyricBoxMove:function(num) {                                      //控制歌词的移动
+             for (var i = 0; i < this.lyricTimeArr.length; i++) {
+                if (num === this.lyricTimeArr[i]) {
+                var Top = 80 - (i * 20) + 'px';
+			    var lightClass = '.lyric' + i;
+			$(lightClass).siblings().removeClass('light');
+            $(lightClass).addClass('light');
+			$('.lyric').animate({
+                top: Top
+            }, 300);
+        }
+    }
+},
+		currentTime:function(){                                  //获取歌曲的实时的时间
+		    var current = this.audioObject.currentTime
 		    var min = Math.floor(current/60)
 		    var sec = Math.round(current - min*60)
 			if(min === 0 &&sec<10){
@@ -258,57 +259,100 @@ currentTime:function(){
 			else if(min > 0 && sec>=10){
 				$('.current').text('0'+min+':'+sec)
 			}
-},
-
-  lyricBoxMove:function(num) {
-    for (var i = 1; i < this.lyricTimeArr.length; i++) {
-        if (num === this.lyricTimeArr[i]) {
-            var Top = 80 - i * 40 + 'px';
-			var lightClass = '.lyric' + i;
-			 $(lightClass).siblings().removeClass('light');
-            $(lightClass).addClass('light');
-			$('.lyric').animate({
-                top: Top
-            }, 100);
-        }
-    }
-},
-    clickPresent:function(){
-		var _this = this
+}, 
+    	clickPresent:function(){                                   //点击控制进度条的移动
+		    var _this = this
          $('.progress').on('click',function(e){
 			var distance = e.clientX -  $(this).offset().left 
 			var per = distance / $(this).width()
 		  $('.progress .line').css({width: distance})	
 			  _this.audioObject.currentTime = _this.audioObject.duration*per
-
 		 })
 
 	},
-	autoPresent:function(){
-        var length = this.audioObject.currentTime/this.audioObject.duration*100
+		autoPresent:function(){                                                         //进度条的移动
+            var length = this.audioObject.currentTime/this.audioObject.duration*100
 		$('.progress .line').css({width:length+'%'})
 		if(length === 100){
 			this.getSong()
 		}
 
 	},
-	durationTime:function(){
-		var duration = this.audioObject.duration
-		var min = Math.floor(duration/60)
-		var sec = Math.round(duration - min*60)
-			if(sec<10){
-					  $('.duration').text('0'+min+':'+'0'+sec)
+		durationTime:function(){                                 //歌曲当前时间
+		    var duration = this.audioObject.duration
+		    var min = Math.floor(duration/60)
+		    var sec = Math.round(duration - min*60)
+			 if(sec<10){
+			 		  $('.duration').text('0'+min+':'+'0'+sec)
 			}else if(sec>=10){
 					$('.duration').text('0'+min+':'+sec)
 			}
 				
+	},
+		controlVolume:function(){
+		    var $handle = this.$handle=  $('.volume-ct .handle'),
+		        $line= this.$line = $('.volume-ct .line'),
+			    $ct = this.$ct= $('.volume-ct'),
+			    $icon= this.$icon= $('.volume .iconfont'),
+			    _this = this;  	    
+		 $ct.on('click',function(e){                                          //控制音量按钮点击
+              var dis =_this.dis= e.clientX - $(this).offset().left
+			  var per = dis/$(this).width()
+			  $handle.css({left:dis})
+			  $line.css({width:dis+4})
+			  _this.audioObject.volume = per
+		})
+		 $handle.on('mousedown',function(e){                   //控制音量按钮拖动
+			   e.stopPropagation()
+                _this.disX = e.clientX -$(this).offset().left	
+		$('body').on('mousemove',function(e){
+                    var L = _this.L= e.clientX - _this.disX - $ct.offset().left;
+					if(L >= 146){
+                        L = 146
+					}else if(L <=-4 ){
+						L = -4
+					}			
+				    _this.$line.css({width:L+4})
+					_this.$handle.css({left:L})
+					_this.audioObject.volume = (L+4)/$ct.width()					
+		$('body').on('mouseup',function(){
+							$handle.unbind('mouseup')
+            				$('body').unbind('mousemove')
+					 })
+				})
+				
+		})
+		$icon.on('click',function(){                                   //控制音量图标
+		if(_this.audioObject.volume === 0){		
+				_this.$icon.attr('class','iconfont icon-yinliang')
+				 _this.$line.css({width:150})
+			       _this.$handle.css({left:146})
+					_this.audioObject.volume = 1
+				
+			}else{
+				_this.$icon.attr('class','iconfont icon-wusheng')
+				_this.audioObject.volume = 0
+				_this.$line.css({width:0})
+				_this.$handle.css({left:-4 })
+			}
+		
+		})
+		this.audioObject.onvolumechange = function(){                 //监听音量改变事件
+		if(_this.audioObject.volume ===0){
+				_this.$icon.attr('class','iconfont icon-wusheng')
+		}else{
+				_this.$icon.attr('class','iconfont icon-yinliang')
+
+				  
+		}			
+
+		}
+
 	}
   }
 
   new musicPlay()
-  
-
-	
+  	
 	</script>
 	
 	

@@ -74,6 +74,7 @@ body {
 	line-height: 40px;
 	padding-right: 10px;
 	cursor: pointer;
+	color: #fff;
 }
 .icon{
 	position: absolute;
@@ -86,18 +87,13 @@ body {
 	height:40px;
 	width:40px;
 	border: 1px solid #000;
-	line-height: 37px;
+	line-height: 40px;
 	border-radius: 50%;
 	position: relative;
 	top:25px;
 	left: 30px;
-	cursor:pointer
-}
-.icon .icon-pause{
-	position: absolute;
-	left: 11px;
-	top:3px;
-	
+	cursor:pointer;
+	text-align: center
 }
 .icon .forward{
 	height:30px;
@@ -142,7 +138,8 @@ body {
 	height: 2px;
 	width: 180px;
 	border-radius: 1px;
-	background: rgba(102, 102, 102, 0.4)
+	background: rgba(102, 102, 102, 0.2);
+	cursor: pointer
 }
 .progress .line{
    position:absolute;
@@ -151,15 +148,7 @@ body {
    width:0px;
    background: #db4437
 }
-.progress .handle{
-    position: absolute;
-	height: 8px;
-	width: 8px;
-	border-radius: 50%;
-	background: blue;
-	cursor: pointer;
-	margin: -3px 0
-}
+
 
 
 
@@ -205,19 +194,73 @@ body {
 	height: 150px;
     text-align: center;
 	margin-top: 35px;
-	overflow: hidden;
+    overflow: hidden;
 	position: relative
 }
 .lyric{
-	font-size: 14px;
+	font-size: 12px;
 	font-weight: 2px;
 	color:#fff;
-	line-height: 30px;
+	line-height: 20px;
 	position:absolute;
     left: 50%;
 	transform: translate(-50%,0);
-	top:20px
+	top:80px
 }
 .lyric .light{
-	color:red
+	color:red;
+  transition: 0.5s
+}
+
+
+
+
+.volume{
+	height:20px;
+	width: 220px;
+	position: absolute;
+	left:40px;
+	top:285px;
+	line-height:16px;	
+}
+.volume .icon-yinliang{
+     font-size: 17px;
+	 position: absolute;
+	 left: 17px;
+	 top:2px;
+	 cursor: pointer
+}
+.volume .icon-wusheng{
+     font-size: 14px;
+	 position: absolute;
+	 left: 17px;
+	 top:3px;
+	 cursor: pointer
+}
+.volume-ct{
+	position: absolute;
+	left:40px;
+	top:9px;
+	height: 2px;
+	width: 150px;
+	border-radius: 1px;
+	background: rgba(102, 102, 102, 0.4);
+	cursor: pointer
+}
+.volume-ct .line{
+   position:absolute;
+   left: 0;
+   height:2px;
+   width:150px;
+   background:#fff
+}
+.volume-ct .handle{
+    position: absolute;
+	left: 146px;
+	height: 8px;
+	width: 8px;
+	border-radius: 50%;
+	background:#fff;
+	cursor: pointer;
+	margin: -3px 0
 }

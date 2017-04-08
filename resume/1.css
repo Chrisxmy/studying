@@ -1,0 +1,167 @@
+*{
+    padding: 0;
+    margin: 0;
+    border: 0;
+    outline: 0;
+    font-size: 14px;
+    font-family: "Lucida Grande", "Helvetica Nueue", Arial, sans-serif;
+}
+a{
+    text-decoration: none;
+}
+li{
+    list-style: none;
+}
+.page-wrap{
+
+    background-size:cover; 
+    height: 100%
+}
+.aside{
+    position: fixed;
+    left: 0;
+    top: 0;
+    min-width: 250px;
+    height: 100%;
+    background: #2e2e2e;
+    text-align: center;
+}
+.photo{
+    max-height: 100px;
+    max-width: 100px;
+    border-radius: 50%;
+    margin-top: 70px;
+    margin-bottom: 20px;
+}
+.aside a{
+    color: #ffecec;
+    font-size: 16px;
+}
+.aside span{
+    font-size: 24px;
+    display: block;
+    margin-bottom: 50px;
+    color:#2bb0d4;
+}
+.aside .intro{
+    line-height: 50px;
+    text-align: left;
+    padding: 0 50px;
+}
+.aside .intro a:hover{
+   color: #2bb0d4;
+    transition: 0.5s;
+}
+
+.aside .icon{
+    margin-right: 10px;
+}
+.footer{
+   position: absolute;
+   bottom: 10px;
+   left: 30px
+}
+
+.footer .logo a{
+ display: inline-block;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 40px;
+}
+.logo .icon{
+    margin: 0 9px;
+}
+.logo .email{
+    background-color: rgb(0, 171,108);
+    opacity: 0.5;
+}
+.logo .book{
+    background-color: rgb(88,70,19);
+    opacity: 0.5;
+}
+.logo .git{
+    background-color: #000000;
+    opacity: 0.5;
+}
+.logo .weibo{
+    background-color: rgb(150,14,14);
+    opacity: 0.5;
+}
+.footer .logo a:hover{
+    opacity: 1;
+}
+.footer .source{
+    font-size: 14px;
+    color: #999;
+    margin:10px 0;
+}
+.footer .source span.right{
+    font-size: 14px;
+    color: #999;
+}
+.footer .source a{
+    font-size: 14px;
+    color: #999;
+    margin: 0;
+    text-decoration: underline;
+}
+
+.person{
+    
+}
+
+#nav{
+    width: 100%;
+    height: 50px;
+    background: #000;
+  display: none  ;
+}
+#nav span{
+    float: right;
+    color: white;
+    line-height: 50px;
+}
+
+@media (max-width: 500px) {
+  .aside{
+      display: none
+  }
+  #nav{
+      display: block
+  }
+  
+}
+#items{
+    padding-left: 250px
+}
+
+.itemList{
+    width: 80%;
+    margin: 30px auto; 
+}
+
+.itemList>a{
+    width: 50%;
+    outline: 1px solid blue;
+    float: left;
+    height: auto;
+    position: relative
+  
+}
+.itemList>a>img{
+    width: 100%;
+    height: auto;
+}
+
+
+
+
+
+
+
+
+
+
+
