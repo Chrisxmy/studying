@@ -145,7 +145,7 @@
             dataType: "json",
         }).done(function (e) { 
              var html = ''
-			   for(let i=0;i<e.channels.length;i++){
+			   for(var i=0;i<e.channels.length;i++){
                   html += '<li>'+e.channels[i].name+'</li>'
 			 } 
 			   $('.channel-list').append(html)
