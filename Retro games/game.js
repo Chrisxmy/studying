@@ -80,7 +80,7 @@
 				 this.Parent.appendChild(ul);
 				 ul.style.left = (this.Parent.offsetWidth-ul.offsetWidth)/2+'px'
 				 this.ul = ul;
-                  for(let i=0;i<Level.map.length;i++){
+                  for(var i=0;i<Level.map.length;i++){
                            var Li = document.createElement('li') ;
 						   Li.className = this.enemy[Level.map[i]].style;
 						   Li.blood = this.enemy[Level.map[i]].blood
@@ -91,10 +91,10 @@
 					//  this.Li = document.querySelectorAll('li');  //!!!     querySelectorAll选择器返回的是NodeList是静态的 遍历时做dom操作不会及时反应在集合中 以至于下面出错
 					  this.Li = ul.getElementsByTagName('li');
 
-				   for(let i =0;i<this.Li.length;i++){                          // 重新布局 float布局在物体消失后会导致移动
+				   for(var i =0;i<this.Li.length;i++){                          // 重新布局 float布局在物体消失后会导致移动
                          arr.push([this.Li[i].offsetLeft,this.Li[i].offsetTop])
 				   }
-				   for(let i=0;i<this.Li.length;i++){
+				   for(var i=0;i<this.Li.length;i++){
 					   this.Li[i].style.position = 'absolute'
 					   this.Li[i].style.left = arr[i][0] +'px'
 					   this.Li[i].style.top = arr[i][1] +'px'
