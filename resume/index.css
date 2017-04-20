@@ -6,6 +6,9 @@
     font-size: 14px;
     font-family: "Lucida Grande", "Helvetica Nueue", Arial, sans-serif;
 }
+body{
+    background: #bbb
+}
 a{
     text-decoration: none;
 }
@@ -109,14 +112,33 @@ li{
 }
 
 .person{
-    
+    padding-left: 350px;
+    font-size:16px;
+    color: #fff;
+    background: url('./image/1.jpg') no-repeat;
+    background-size:cover;
+    background-position:center;
+    padding-bottom:600px;  
+}
+.person>h3{
+    font-size: 20px;
+    margin-bottom: 20px
+}
+.person li{
+    margin-bottom: 10px
+}
+.person li:last-child{
+    margin-bottom:0
+}
+.person li span{
+    margin-right:4px
 }
 
 #nav{
     width: 100%;
     height: 50px;
     background: #000;
-  display: none  ;
+    display: none  ;
 }
 #nav span{
     float: right;
@@ -136,6 +158,11 @@ li{
 #items{
     padding-left: 250px
 }
+#items>.title{
+    font-size:20px;
+    text-indent: 4em
+}
+
 
 .itemList{
     width: 80%;
@@ -143,17 +170,104 @@ li{
 }
 
 .itemList>a{
-    width: 50%;
-    outline: 1px solid blue;
+    width: 45%;
     float: left;
     height: auto;
-    position: relative
-  
+    position: relative;
+    margin:0 5px 5px 0;
+    font-size:14px;
+    color: #ccc;
+    display: inline-block;
+    overflow:hidden;
 }
 .itemList>a>img{
     width: 100%;
     height: auto;
+    position:relative;
+    z-index:-1;
 }
+.music,.game,.todo,.note,.dataPicker,.solider{
+   position:relative;
+   background:rgba(7,17,27,0.3);
+   box-shadow:0 2px 5px 0 rgba(0,0,0,.3)
+}
+
+.music h1,
+.game h1,
+.todo h1,
+.note h1,
+.dataPicker h1,
+.solider h1{
+    position:absolute;
+    left:50%;
+    top:40%;
+    transform: translate(-50%,-50%);
+    font-size:1.5em;
+    font-weight:700 
+}
+.music p,
+.game p,
+.todo p,
+.note p,
+.dataPicker p,
+.solider p{
+    position:absolute;
+    top:35%;
+    display: none;
+    width:100%;
+    text-align: center
+}
+@keyframes h1 {
+  0% { top: 35%; }
+  100% { top:30%; }
+}
+@keyframes p {
+  0% { top: 43%;}
+  100% { top:45%; }
+}
+.music:hover h1,
+.game:hover h1,
+.todo:hover h1,
+.note:hover h1,
+.dataPicker:hover h1,
+.solider:hover h1
+{
+    animation: 0.5s h1 forwards 
+}
+
+.music:hover p,
+.game:hover p,
+.todo:hover p,
+.note:hover p,
+.dataPicker:hover p,
+.solider:hover p
+{
+    display: block;
+    transition: 0.5s;
+    animation: 0.5s  p forwards
+}
+.music:hover,
+.game:hover,
+.todo:hover,
+.note:hover,
+.dataPicker:hover,
+.solider:hover
+{
+    background-color:rgba(7,117,27,0.6);
+}
+.music:hover img,
+.game:hover img,
+.todo:hover img,
+.note:hover img,
+.dataPicker:hover img,
+.solider:hover img
+{
+    transform: scale(1.02,1.02);
+    transition: 0.5s 
+}
+
+
+
 
 
 
