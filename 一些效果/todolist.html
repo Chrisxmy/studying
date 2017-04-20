@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+		<script src="https://unpkg.com/vue/dist/vue.js"></script>
+		<style>
+		*{
+			margin: 0;
+			padding: 0
+		}
+		body{
+			background: #f0e9e6;
+		}
+		li{list-style:none}
+		a{
+			text-decoration: none;
+			color:#ccc;
+		}
+		.clear:after{
+			display: block;
+			clear: both;
+			content:''
+		}
+		.header{
+			width: 100%;
+			background:cadetblue;
+		}
+		.header .title{
+			width:95%;
+			margin: 0 auto;
+			font-size: 14px;
+			color: #eee;
+			padding: 5px 0;
+		}
+		.main{
+			width:95%;
+			margin: 0 auto;
+		}
+		.main>h3{
+			font-size: 14px;
+			padding: 6px 0;
+		}
+		.main .ipt{
+			width:95%;
+			outline: none;
+			height: 30px;
+			padding:0 8px;
+			font-size: 16px;
+		}
+		.item{
+			margin-top: 10px;
+			display: flex;
+			justify-content: space-between;
+			width:95%
+		}
+		.item .no-complete{
+			 color: red;
+			 font-size: 16px;
+		}
+		.item .action{
+			font-size:14px;	
+		}
+		.item .action .active{
+			border:1px solid #ccc;
+		}
+		.item .action>a{
+			padding: 3px 15px;
+			color: #000;
+			display: inline-block
+		}
+		.item .action>.active{
+			outline: 1px solid red;
+			color: red
+		}
+		.tasks{
+			width: 95%;
+			margin: 0 auto
+		}
+		.list .todo{
+			color:#000;
+			font-size:16px;
+			border-bottom:1px solid #ccc;
+			background: #fff;
+			border-radius: 5px;	
+			height:40px;
+			position: relative;
+			line-height: 40px;
+			text-indent: 2em;
+		}
+		
+		.list .todo .destroy{
+	         float: right;
+			 background: yellow;
+			 border: none;
+			 display: none;
+			 font-size:24px;
+			 padding: 5px;	
+			 cursor: pointer;
+		}
+		.list .todo:hover{
+			background: yellow
+		}
+		.list .todo:hover .destroy{
+			display:block 
+		}
+		.list .view label{
+			cursor:pointer
+		}
+
+	
+		.list .completed{
+			text-decoration:line-through;
+			background: #eee;	
+		}
+		.list .edit{
+			display: none;
+			height: 37px;
+			min-width:280px; 
+			border-radius:5px; 
+			outline: none;
+			font-size: 16px
+		}
+		.list .editing .edit{
+			display: block;
+		}
+		.list .editing .view{
+			display: none;
+		}
+		
+	
+
+		</style>
+</head>
+<body>
+	<div class='header'>
+		<div class='title'>
+			<h2>任务计划列表</h2>
+		</div>
+	</div>
+	<div class='main'>
+			<h3>添加任务:</h3>
+			<input class='ipt' type='text' 
+			v-model='todo'
+			@keyup.enter='addTodo'>
+
+			<ul class='item'>
+				<li class='no-complete' v-show='list.length'>{{nocomplete}}个任务未完成</li>
+				<li class='action'>
+					<a  href='#all' :class="{active:visibility === 'all'}">所有任务</a>
+					<a  href='#uncomplete' :class="{active:visibility === 'uncomplete'}">未完成的任务</a>
+				    <a  href='#complete'  :class="{active:visibility === 'complete'}">完成的任务</a>
+				</li>
+			</ul>
+		<h3 class='big-title'>任务列表:</h3>
+		<div class='tasks'>
+			<span class='no-task'v-show='!list.length'>还没有添加任何任务!!</span>
+			<ul class='list'>
+				<li class='todo' :class='{completed:item.isChecked,editing:item === edtor}' v-for='item in filterList'>
+					<div class='view clear'>
+						<input  class='toggle' type='checkbox' v-model='item.isChecked'>
+						<label @dblclick='edtorTodo(item)'>{{item.title}}</label>
+						<button class='destroy' @click='deleteTodo(item)'>x</button>
+					</div>
+					<input v-foucs='edtor === item' 
+					       class='edit' type='text' 
+						   v-model='item.title' 
+						   @blur='editored(item)'
+						   @keyup.enter='editored(item)'
+						   @keyup.esc = 'cancel(item)'>
+				</li>
+				
+			</ul>
+		</div>
+	</div>
+	<script>
+	var store = {
+		save(key,value){
+			var str = JSON.stringify(value);
+            localStorage.setItem(key,str)
+		},
+		fetch(key){
+			var Json = localStorage.getItem(key);
+			console.log(key)
+            return JSON.parse(Json) || [];
+		}
+	}  
+	var list = store.fetch('123');
+
+	var Vue = new Vue({
+		el:'.main',
+		data:{
+			list:list,
+			todo:"",
+			edtor:'',
+			beforeTitle:'',
+			visibility:'all'
+		},
+		watch:{
+			list:{
+				handler(){
+                store.save('123',this.list)
+			},
+			deep:true
+			}
+		},
+		computed:{
+			nocomplete(){
+				return this.list.filter(function(item){
+                        return !item.isChecked
+			          }).length
+			},
+			filterList(){
+				var filterHash = {
+					all:function(list){
+						return list;
+					},
+					complete:function(list){
+						return list.filter(function(item){
+							return item.isChecked;
+						}
+						)
+					},
+					uncomplete:function(list){
+						return list.filter(function(item){
+							return !item.isChecked;
+						})
+				}
+					}
+						return filterHash[this.visibility](list);
+				}
+			
+		},
+		methods:{
+			addTodo(){
+				this.list.push({
+					title:this.todo,
+					isChecked:false
+				});
+				this.todo='';
+
+			},
+			deleteTodo(todo){
+				let index = this.list.indexOf(todo);
+				this.list.splice(index,1);
+			},
+			edtorTodo(todo){
+				this.beforeTitle = todo.title;
+				this.edtor = todo;		
+		},
+			editored(todo){
+				this.edtor = ''
+				},
+			cancel(todo){
+				 todo.title = this.beforeTitle;
+				 this.edtor = ''
+			},
+			save(key,value){
+			var str = JSON.stringify(value);
+            localStorage.setItem(key,str)
+		},
+		fetch(key){
+			var Json = localStorage.getItem(key);
+			console.log(key)
+            return JSON.parse(Json) || [];
+		}
+		},
+		directives:{
+				'foucs':{
+					update(el,binding){
+				   	el.focus()
+			}
+		}
+
+		}
+	})
+
+        function watchHashChange(){
+			var hash = window.location.hash.slice(1)
+			Vue.visibility = hash
+		}
+	 watchHashChange();
+
+	 window.addEventListener('hashchange',watchHashChange)
+     
+
+
+	
+	</script>
+	
+</body>
+</html>

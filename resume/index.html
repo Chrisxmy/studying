@@ -1,10 +1,10 @@
 <html lang="en"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
-    <link rel="stylesheet" href="1.css">
+    <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="font2/iconfont.css"><link rel="stylesheet" href="font1/iconfont.css">
     <title>谢梦扬</title>
-    <script type="text/javascript" charset="utf-8" src="http://cdn.gwdang.com/js/gwdang-notifier-bdext.js"></script></head>
+    </head>
 <body>
 <div class="page-wrap">
     <nav id='nav'>
@@ -15,44 +15,74 @@
         <span>谢梦扬</span>
         <ul class="intro">
             <li><a href="javascript:"> <i class="icon iconfont">&#xe607;</i>About</a></li>
-            <li><a href="javascript:"><i class="icon iconfont">&#xe631;</i>Items</a></li>
+            <li><a href="javascript:" class='items'><i class="icon iconfont">&#xe631;</i>Items</a></li>
             <li><a href="javascript:"><i class="icon iconfont">&#xe62f;</i>Skills</a></li>
             <li><a href="javascript:"><i class="icon iconfont">&#xe630;</i>Goal</a></li>
         </ul>
         <div class="footer">
             <div class="logo">
-                <a href="" class="book"><i class="icon iconfont ">&#xe613;</i></a>
-                <a href="" class="email"><i class="icon iconfont ">&#xe640;</i></a>
-                <a href="" class="git"><i class="icon iconfont">&#xe7d6;</i></a>
-                <a href="" class="weibo"><i class="icon iconfont">&#xe601;</i></a>
+                <a href="http://www.jianshu.com/u/6c029be09110" class="book" target='_blank'><i class="icon iconfont">&#xe613;</i></a>
+                <a href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=UmNnYGdiYmFjamtiEiMjfDE9Pw" class='email' target='_blank'><i class="icon iconfont ">&#xe640;</i></a>
+                <a href="https://github.com/Chrisxmy/studying" class="git" target='_blank'><i class="icon iconfont">&#xe7d6;</i></a>
+                <a href="javascript:" class="weibo"><i class="icon iconfont">&#xe601;</i></a>
             </div>
             <p class="source">
-                Open source:<a href="https://github.com/Zegendary/Garbage" target="_blank">GitHub</a>
+                Open source:<a href="https://github.com/Chrisxmy/studying" target="_blank">GitHub</a>
                 <br>
-                <span class="right">© copyright Zegendary,2016</span>
+                <span class="right">© copyright Chris,2017</span>
             </p>
         </div>
     </div>
-    <div class="person "></div>
+    <div class="person">
+        <h3>个人信息</h3>
+        <ul>
+        <li><span>姓名:</span>谢梦扬</li>
+        <li> <span>年龄:</span>24</li>
+        <li> <span>求职意向:</span>前端工程师</li>
+        <li> <span>城市:</span>苏州/杭州</li>
+        <li> <span>联系电话:</span>13914003074</li>
+        </ul>
+        <p class='intro'></p>        
+    </div>
+    
     <div id='items'>
-        <h3>Works</h3>
+        <h3 class='title'>Items</h3>
     <div class='itemList clear'>
-    <a href='' class='game'><img src='image/1.jpg'></a>
-    <a href='' class='music'><img src='image/1.jpg'></a>
-    <a href='' class='todo'><img src='image/1.jpg'></a>
-    <a href='' class='note'><img src='image/1.jpg'></a>
+    <a href='../FM player/music.html' class='music' target='_blank'><img src='image/music.jpg'> 
+    <h1>Music Player</h1>
+    <p>基于HTML5的音乐播放器,运用技术html,css,js,jQuery,Ajax</p> 
+    </a>
+    <a href='../Retro games/game.html' class='game' target='_blank'><img src='image/game.jpg'>
+     <h1>Retro game</h1>
+    <p>原生js开发的一个小游戏,运用技术html，css，js</p> 
+    </a>
+    <a href='https://github.com/Chrisxmy/note-websit' class='todo' target='_blank'><img src='image/note.png'>
+     <h1>Note</h1>
+    <p>一个便利贴网站,模块化开发方式-webpack,瀑布流布局,发布订阅模式,Express的简单使用</p> 
+    </a>
+    <a href='../一些效果/todolist.html#all' class='note' target='_blank'><img src='image/todo.png'>
+     <h1>List application</h1>
+    <p>基于Vue.js的清单应用，入门</p> 
+    </a>
+     <a href='../封装组件/DateSpicker/UIDateSpicker.html' class='dataPicker' target='_blank'><img src='image/dataPicker.png'>
+     <h1>DataPicker</h1>
+    <p>一个日历插件,运用技术html,css,js,jQuery</p> 
+    </a>
+      <a href='../轮播插件/solider.html' class='solider' target='_blank'><img src='image/solider.png'>
+     <h1>Retro game</h1>
+    <p>一个轮播插件,运用技术html,css,js,jQuery</p> 
+    </a>
 </div>
 </div>
 </div>
-
+<script src='../封装组件/jquery.min.js'></script>
 
 <script>
-
+var $items = $('.aside .items')
+$items.on('click',function(){
+    $("html,body").animate({scrollTop:$('#items').offset().top},500)   
+})
 
 </script>
-
-
-
-
 </body>
 </html>
