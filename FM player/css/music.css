@@ -95,6 +95,12 @@ body {
 	cursor:pointer;
 	text-align: center
 }
+.icon .playAndpause:hover{
+	border-color: #5c5c5c
+}
+.icon .forward:hover{
+   border-color: #5c5c5c
+}
 .icon .forward{
 	height:30px;
 	width: 30px;
@@ -105,6 +111,7 @@ body {
 	left: 90px;
 	top:-12px;
 	line-height: 30px;
+	cursor:pointer;
 }
 .forward .icon-fastforward{
 	position: absolute;
