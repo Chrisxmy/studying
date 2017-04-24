@@ -27,6 +27,7 @@ li{
     min-width: 250px;
     height: 100%;
     background: #2e2e2e;
+    background:#a29971;
     text-align: center;
 }
 .photo{
@@ -47,13 +48,22 @@ li{
     color:#2bb0d4;
 }
 .aside .intro{
-    line-height: 50px;
     text-align: left;
-    padding: 0 50px;
 }
-.aside .intro a:hover{
-   color: #2bb0d4;
+.aside .intro>li{
+    padding-left:70px;
+    width:180px;
+    line-height:35px;
+    margin-bottom:5px;
+    cursor: pointer;
+}
+.aside .intro li:hover{
+    background-color:#87b0a5;
     transition: 0.6s;
+    display: inline-block
+}
+.aside .intro .active{
+       background-color: #87b0a5;
 }
 
 .aside .icon{
@@ -97,28 +107,29 @@ li{
 }
 .footer .source{
     font-size: 14px;
-    color: #999;
+    color:#000;
     margin:10px 0;
 }
 .footer .source span.right{
-    font-size: 14px;
-    color: #999;
+    font-size: 14px; 
+    color:#000; 
 }
 .footer .source a{
     font-size: 14px;
-    color: #999;
+    color:#000;
     margin: 0;
     text-decoration: underline;
 }
 
 .person{
+    padding-top: 30px;
     padding-left: 350px;
     font-size:16px;
     color: #fff;
-    background: url('./image/1.jpg') no-repeat;
+    background: #87b0a5;
     background-size:cover;
     background-position:center;
-    padding-bottom:600px;  
+    height:100%
 }
 .person>h3{
     font-size: 20px;
@@ -132,6 +143,12 @@ li{
 }
 .person li span{
     margin-right:4px
+}
+.person .intro{
+    margin-top: 80px;
+    font-size:14px;
+    line-height: 24px
+   
 }
 
 #nav{
@@ -156,7 +173,7 @@ li{
   
 }
 #items{
-    padding-left: 250px
+    padding-left: 250px;
 }
 #items>.title{
     font-size:20px;
@@ -265,6 +282,32 @@ li{
     transform: scale(1.02,1.02);
     transition: 0.5s 
 }
+
+#skills{
+    padding:150px 0;
+    margin-left: 250px;
+    background: #109085;
+    position:relative;
+    z-index: -1
+}
+#skills .wrap{
+    width: 600px;
+     text-align: center;
+     margin: 0 auto
+}
+.skillList{
+    position: absolute;
+    bottom:20px;
+    left:50px;
+    list-style-type: square;
+}
+.skillList>li{
+    list-style-type:disc;
+    font-size:14px;
+    line-height: 28px 
+}
+
+
 
 
 

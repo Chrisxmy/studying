@@ -2,6 +2,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" href="index.css">
+     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="font2/iconfont.css"><link rel="stylesheet" href="font1/iconfont.css">
     <title>谢梦扬</title>
     </head>
@@ -14,10 +15,10 @@
         <img src="image/photo.jpg" class="photo">
         <span>谢梦扬</span>
         <ul class="intro">
-            <li><a href="javascript:"> <i class="icon iconfont">&#xe607;</i>About</a></li>
-            <li><a href="javascript:" class='items'><i class="icon iconfont">&#xe631;</i>Items</a></li>
-            <li><a href="javascript:"><i class="icon iconfont">&#xe62f;</i>Skills</a></li>
-            <li><a href="javascript:"><i class="icon iconfont">&#xe630;</i>Goal</a></li>
+            <li class='about active'><a href="javascript:" > <i class="icon iconfont">&#xe607;</i>About</a></li>
+            <li class='items'><a href="javascript:" ><i class="icon iconfont">&#xe631;</i>Items</a></li>
+            <li class='skills'><a href="javascript:"><i class="icon iconfont">&#xe62f;</i>Skills</a></li>
+            <li  class='goal'><a href="javascript:"><i class="icon iconfont">&#xe630;</i>Goal</a></li>
         </ul>
         <div class="footer">
             <div class="logo">
@@ -42,7 +43,11 @@
         <li> <span>城市:</span>苏州/杭州</li>
         <li> <span>联系电话:</span>13914003074</li>
         </ul>
-        <p class='intro'></p>        
+        <p class='intro'>我是一个对事认真负责，热爱运动,热衷于技术类工作的人。<br/>
+        自从年前接触到了程序，毅然放弃了以前的工作，</br>
+        通过3个半月左右的自学(看书，视频，博客等)，学习了部分前端相关技术<br/>
+        我现在正在寻找一家公司，希望加入一个技术氛围OK，使人有成就感的互联网公司。
+     </p>        
     </div>
     
     <div id='items'>
@@ -69,19 +74,114 @@
     <p>一个日历插件,运用技术html,css,js,jQuery</p> 
     </a>
       <a href='../轮播插件/solider.html' class='solider' target='_blank'><img src='image/solider.jpg'>
-     <h1>Retro game</h1>
+     <h1>Solider</h1>
     <p>一个轮播插件,运用技术html,css,js,jQuery</p> 
     </a>
 </div>
 </div>
+<div id='skills'>
+    <div class='wrap'>
+<div id="ct" style="width: 600px;height:400px;"></div>
+</div>
+<ul class='skillList'>
+    <li>熟悉HTML,CSS,对W3C标准和标签语义化有一定理解，掌握常见的布局方式,熟悉flex布局,熟悉Bootstrap</li>
+    <li>初步了解HTML5新标签和CSS3样式动画</li>
+    <li>对JaveScript有持续深入理解，掌握面向对象的编程思想，对es6语法有一定了解</li>
+    <li>熟悉Ajax,jQery,JSON等前端技术</li>   
+    <li>了解前端模块化，工程化，对npm webpack require.js glup等前端工具有一定了解</li>
+    <li>了解http协议，掌握浏览器调试工具,可快速定位BUG</li>
+</ul>
+
+</div>
 </div>
 <script src='../封装组件/jquery.min.js'></script>
+<script src='./echarts.min.js'></script>
 
 <script>
-var $items = $('.aside .items')
+
+var $items = $('.aside .items'),
+    $person = $('.aside .about'),
+    $skills =  $('.aside .skills');
+
+    var $itemTop = $('#items').offset().top,
+    $personTop = $('.person').offset().top,
+    $skillsTop = $('#skills').offset().top;
+
+
 $items.on('click',function(){
-    $("html,body").animate({scrollTop:$('#items').offset().top},500)   
+    $("html,body").animate({scrollTop:$itemTop},500)   
 })
+$person.on('click',function(){
+    $("html,body").animate({scrollTop:$personTop},500)
+})
+$skills.on('click',function(){
+    $("html,body").animate({scrollTop:$skillsTop},500)   
+})
+
+
+$(window).on('scroll',function(){
+
+    console.log(1300 <= $(this).scrollTop())
+
+    if($(this).scrollTop() < $itemTop/2){
+        $person.siblings().css({background:0})
+        $person.css({background:'#87b0a5'})
+
+    }else if( $itemTop/2 <= $(this).scrollTop() && $(this).scrollTop() <  1300){
+        $items.siblings().css({background:0})
+        $items.css({background:'#bbb'});
+    }else if( 1300 <= $(this).scrollTop()){  
+        $skills.siblings().css({background:0})
+        $skills.css({background:'#109085'})
+    
+    }
+})
+
+
+
+
+
+ var myCharts= echarts.init(document.querySelector('#ct'))
+ option =  {
+     title : {
+                text: 'Skills',
+                x:'center'
+        },
+
+    series : [
+        {
+            name: '访问来源',
+            type: 'pie',
+            radius: '55%',
+            roseType: 'angle',
+            data:[
+                {value:235, name:'HTML&HTML5'},
+                {value:274, name:'CSS&CSS3'},
+                {value:310, name:'JS'},
+                {value:335, name:'jQuery'},
+                {value:200, name:'less'},
+                {value:200, name:'webpack'}
+            ]
+        }
+    ],
+    itemStyle: {
+    normal: {
+        // 阴影的大小
+        shadowBlur: 400,
+        // 阴影水平方向上的偏移
+        shadowOffsetX: 0,
+        // 阴影垂直方向上的偏移
+        shadowOffsetY: 0,
+        // 阴影颜色
+        shadowColor: 'rgba(0, 0, 0, 0.7)'
+    }
+},
+ 
+ }
+    myCharts.setOption(option)
+         
+
+
 
 </script>
 </body>
