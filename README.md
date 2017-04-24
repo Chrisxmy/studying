@@ -1,2 +1,2 @@
 # studying
-studying自己的一些练习
+自己的一些练习
