@@ -15,7 +15,7 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-jineng:before { content: "\e607"; }
+.icon-jineng:before { content: "\e607" }
 
 .icon-mingpian:before { content: "\e631"; }
 

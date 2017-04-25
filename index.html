@@ -6,8 +6,23 @@
 </head>
 <body>
 
-<a href="封装组件/UIDateSpicker.html">pickData</a>
-<a href="封装组件/sliders.html">soliders</a>
+<script>
+var fn ;
 
+function foo(){
+  var a = 2;
+  function baz(){
+      console.log(a)
+  } 
+  fn = bar
+}
+
+function bar(){
+  fn()
+}
+foo()
+bar()
+
+</script>
 </body>
 </html>
