@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap 101 Template</title>
+
+   <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<style>
+div[class*='col-']{
+    outline:1px solid #ccc;
+    background:cadetblue;
+    min-height:50px;
+}
+#login{
+  width: 400px;
+}
+
+</style>
+   
+  </head>
+  <body>
+    <div class='container'>
+     <input type='submit' value='12' class='btn btn-primary'>
+     <input type='submit' value='12' class='btn btn-success'>
+     <input type='submit' value='12' class='btn btn-info'>
+     <input type='submit' value='12' class='btn btn-warning'>
+     <input type='submit' value='12' class='btn btn-danger'>
+     <br> <br>
+     <p class='bg-primary'>首选项</p>
+     <br> <br>
+     <span class='text-primary'>首选项</span> 
+     <div class='alert alert-warning'>警告框!!</div>
+     <div class='alert alert-danger'>危险框!!</div>  
+
+     <div class='panel panel-primary' id='login'>
+       <div class='panel-heading'>
+         Login
+       </div>
+       <div class='panel-body'>
+         <div class='form-group'>
+               <label> 用户名:</label><input type='text' class='form-control'>
+               <div class='alert alert-warning'>警告框!!</div>
+                <label> 密码:</label><input type='password'class='form-control'>
+                <div class='alert alert-warning'>警告框!!</div>
+         </div>
+         <a href=''>忘记密码？</a>  
+           <input type='button' value='登录' class='btn btn-primary pull-right'> 
+  
+       </div>
+      
+     </div>
+</div>
+
+
+
+
+</div>
+
+
+
+
+
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+ <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  </body>
+</html>

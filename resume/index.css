@@ -250,7 +250,8 @@ li{
 .todo h1,
 .note h1,
 .dataPicker h1,
-.solider h1{
+.solider h1,
+.responsive h1{
     position:absolute;
     left:50%;
     top:40%;
@@ -263,12 +264,14 @@ li{
 .todo p,
 .note p,
 .dataPicker p,
-.solider p{
+.solider p,
+.responsive p{
     position:absolute;
     top:35%;
     display: none;
     width:100%;
-    text-align: center
+    text-align: center;
+    line-height: 20px
 }
 @keyframes h1 {
   0% { top: 35%; }
@@ -278,22 +281,15 @@ li{
   0% { top: 43%;}
   100% { top:45%; }
 }
-.music:hover h1,
-.game:hover h1,
-.todo:hover h1,
-.note:hover h1,
-.dataPicker:hover h1,
-.solider:hover h1
-{
-    animation: 0.5s h1 forwards 
-}
+
 
 .music:hover p,
 .game:hover p,
 .todo:hover p,
 .note:hover p,
 .dataPicker:hover p,
-.solider:hover p
+.solider:hover p,
+.responsive:hover p
 {
     display: block;
     transition: 0.5s;
@@ -304,7 +300,8 @@ li{
 .todo:hover,
 .note:hover,
 .dataPicker:hover,
-.solider:hover
+.solider:hover,
+.responsive:hover
 {
     background-color:rgba(7,117,27,0.6);
 }
@@ -313,14 +310,15 @@ li{
 .todo:hover img,
 .note:hover img,
 .dataPicker:hover img,
-.solider:hover img
+.solider:hover img,
+.responsive:hover img
 {
     transform: scale(1.02,1.02);
     transition: 0.5s 
 }
 
 #skills{
-    padding:150px 0;
+    padding:120px 0;
      margin-left:250px;
     background: #109085;
     position:relative;
@@ -329,7 +327,8 @@ li{
 #skills .wrap{
     width: 400px;
      text-align: center;
-     margin: 0 auto
+     margin: 0 auto;
+     margin-bottom: 130px;
 }
 .skillList{
     position: absolute;
@@ -346,6 +345,10 @@ li{
 @media (max-width: 768px){
     #skills{
    margin-left:0
+}
+    #skills .wrap{
+     text-align:left;
+     margin: 0 0 130px 0;
 }
 }
 

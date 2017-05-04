@@ -7,21 +7,94 @@
 <body>
 
 <script>
-var fn ;
-
+/*var fn ;
+var m = 20;
 function foo(){
   var a = 2;
-  function baz(){
+  function baz(a){
       console.log(a)
   } 
-  fn = bar
+  fn = baz
 }
 
 function bar(){
-  fn()
+  fn(m);
 }
+
 foo()
-bar()
+bar() 
+
+
+function foo() {
+    var a = 2;
+
+    return function bar() {
+        var b = 9;
+
+        return function fn() {
+            console.log(a,b);
+        }
+    }
+}
+
+var bar = foo();
+var fn = bar();
+fn(); */
+(function() {
+
+    var a = 10;
+    var b = 20;
+
+    var test = {
+        m: 20,
+        add: function(x) {
+            return a + x;
+        },
+        sum: function() {
+            return a + b + this.m;
+        },
+        mark: function(k, j) {
+            return k + j;
+        }
+    }
+
+    window.test = test;
+
+})();
+
+test.add(100);
+test.sum();
+test.mark();
+
+var _mark = test.mark;
+_mark();(function() {
+
+    var a = 10;
+    var b = 20;
+
+    var test = {
+        m: 20,
+        add: function(x) {
+            return a + x;
+        },
+        sum: function() {
+            return a + b + this.m;
+        },
+        mark: function(k, j) {
+            return k + j;
+        }
+    }
+
+    window.test = test;
+
+})();
+
+test.add(100);
+test.sum();
+test.mark();
+
+var _mark = test.mark;
+_mark();
 
 </script>
 </body>

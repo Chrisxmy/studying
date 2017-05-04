@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Event Bubbling Example</title>
+    <link rel="stylesheet" href="测试.css" type="text/css">
+</head>
+<style type="text/css">
+
+
+</style>
+<body>
+<form type="get">
+    <input type="submit" >
+    <input type="text" name="1234">
+</form>
+
+
+<script>
+    function ajax(opts) {
+        var type = opts.type || 'get';
+        type = type.toLowerCase() || 'get';
+        var url = opts.url || '';
+        var date = opts.date || null;
+        var success = opts.success || function(){};
+        var error = opts.success || function(){};
+        var xhr = window.XMLHttpRequest? new XMLHttpRequest():new ActiveXObject('microsoft.XMLHTTP');
+        var dateArry = [];
+        for(var key in date){
+            dateArry.push(key + '=' +date[key]);
+        }
+        var dateStr = dateArry.join('&');
+        if(type === 'get'){
+            xhr.open(type,url+'?'+dateStr,true);
+            xhr.send();
+        }else{
+            xhr.open(type,url,true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded;charset=utf-8');
+            xhr.send(dateStr)
+        }
+        xhr.onreadystatechange = function(){
+            if(xhr.readyState === 4  && xhr.status === 200){
+                success(xhr.responseText)
+            }else{
+                error();
+            }
+        }
+    }
+
+</script>
+
+</body>
+</html>
