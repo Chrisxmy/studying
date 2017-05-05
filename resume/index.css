@@ -335,6 +335,8 @@ li{
     bottom:20px;
     left:50px;
     list-style-type: square;
+    color:#fff;
+    text-shadow:5px 4px 8px #000000
 }
 .skillList>li{
     list-style-type:disc;
