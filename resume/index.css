@@ -206,7 +206,7 @@ li{
 #items{
     padding-left: 250px;
 }
-@media (max-width: 768px){
+@media only screen and (max-width: 768px){
     #items{
     padding-left: 0;
 }
@@ -283,14 +283,14 @@ li{
 }
 
 
+
 .music:hover p,
 .game:hover p,
 .todo:hover p,
 .note:hover p,
 .dataPicker:hover p,
 .solider:hover p,
-.responsive:hover p
-{
+.responsive:hover p{
     display: block;
     transition: 0.5s;
     animation: 0.5s  p forwards
@@ -317,6 +317,13 @@ li{
     transition: 0.5s 
 }
 
+@media only screen and (max-width: 768px){
+    #items h1,#items p{
+        font-size:14px;
+    }
+   
+}
+
 #skills{
     padding:120px 0;
      margin-left:250px;
@@ -325,7 +332,7 @@ li{
     z-index: -1
 }
 #skills .wrap{
-    width: 400px;
+     width: 400px;
      text-align: center;
      margin: 0 auto;
      margin-bottom: 130px;
@@ -344,7 +351,7 @@ li{
     line-height: 28px 
 }
 
-@media (max-width: 768px){
+@media only screen and (max-width: 768px){
     #skills{
    margin-left:0
 }
@@ -352,6 +359,10 @@ li{
      text-align:left;
      margin: 0 0 130px 0;
 }
+    .skillList>li{
+        line-height: 20px;
+        font-size:12px
+    }
 }
 
 
