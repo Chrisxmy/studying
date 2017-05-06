@@ -3,98 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
+    <style>
+    .box{
+        height:200px;
+        width:200px;
+        background: red
+    }
+    
+    </style>
 </head>
 <body>
 
+    <div class='box'></div>
+
 <script>
-/*var fn ;
-var m = 20;
-function foo(){
-  var a = 2;
-  function baz(a){
-      console.log(a)
-  } 
-  fn = baz
-}
 
-function bar(){
-  fn(m);
-}
-
-foo()
-bar() 
-
-
-function foo() {
-    var a = 2;
-
-    return function bar() {
-        var b = 9;
-
-        return function fn() {
-            console.log(a,b);
-        }
-    }
-}
-
-var bar = foo();
-var fn = bar();
-fn(); */
-(function() {
-
-    var a = 10;
-    var b = 20;
-
-    var test = {
-        m: 20,
-        add: function(x) {
-            return a + x;
-        },
-        sum: function() {
-            return a + b + this.m;
-        },
-        mark: function(k, j) {
-            return k + j;
-        }
-    }
-
-    window.test = test;
-
-})();
-
-test.add(100);
-test.sum();
-test.mark();
-
-var _mark = test.mark;
-_mark();(function() {
-
-    var a = 10;
-    var b = 20;
-
-    var test = {
-        m: 20,
-        add: function(x) {
-            return a + x;
-        },
-        sum: function() {
-            return a + b + this.m;
-        },
-        mark: function(k, j) {
-            return k + j;
-        }
-    }
-
-    window.test = test;
-
-})();
-
-test.add(100);
-test.sum();
-test.mark();
-
-var _mark = test.mark;
-_mark();
+var o = document.addEventListener('touchstart',function(){
+    console.log(11)
+})
+var b = document.addEventListener('click',function(){
+    console.log(22)
+})
 
 </script>
 </body>
