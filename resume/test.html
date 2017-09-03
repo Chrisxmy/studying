@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	*{
+		margin:0;
+		padding:0
+	}
+	.wrap{
+		height:200px;
+		width:200px;
+		border:1px solid red;
+		border-radius:50%;
+		margin:0 auto;
+		position: relative;
+		margin-top:300px;
+		
+		animation: spin 8s infinite linear; 
+	}
+	@keyframes spin {
+  0%   { 
+  	transform: rotate(360deg); 
+  }
+  100% { 
+  	transform: rotate(0deg); 
+  }
+}
+	.f,.s{
+	    display:inline-block;
+        height:20px;
+		width:20px;
+		background: blue;
+		border-radius: 50% ;
+		position: absolute;
+
+	}
+	.s{
+		background: red
+	}
+
+	
+	
+	</style>
+</head>
+<body>
+
+
+	<div class='wrap'>
+		<span class='f'></span>
+		<span class='s'></span>
+		<span class='s'></span>
+		<span class='s'></span>
+		<span class='s'></span>
+		<span class='s'></span>
+	</div>
+	
+	<script src='./jquery.min.js'>
+	</script>
+	<script>
+
+        var $wrap = $('.wrap') 
+
+
+		var $f = $('.f') 
+			var $s = $('.s') 
+
+
+  var arrSpan = $('.wrap span')
+
+ 
+  var r=100;
+
+  function init(){
+	  var dt=-0.5; 
+	  arrSpan.each(function(idx,el){
+		 var Py=Math.sin(dt)*r-10;
+         var Px=Math.cos(dt)*r-10;
+         dt-=0.4
+		 $(el).css({'left':Px+r+'px','top':Py+r+'px'})    
+	 })
+  }
+
+  init()
+
+ 
+     
+
+
+	
+	
+	
+	
+	</script>
+</body>
+</html>

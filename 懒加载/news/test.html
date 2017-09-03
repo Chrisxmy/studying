@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .box1{
+            height: 300px;
+            width:300px;
+            background: red;
+            cursor: pointer;
+            position:absolute;
+        }
+        .box2{
+            height: 300px;
+            width:300px;
+            background: blue;
+            cursor: pointer;
+            position: absolute;
+            top:0;
+            left:330px;
+        }
+    </style>
+</head>
+<body>
+<div class="box1"></div>
+
+
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script>
+   var Drag = (function() {
+    function _drag(opt) {
+        this.$target = opt.id
+        this.settings = {
+              getChange:function(){
+           opt.id.css({background:'yellow'})
+          }
+    }
+        $.extend(this.settings,opt)
+        this.init()
+    }
+    _drag.prototype = {
+        init: function () {
+            this.disX = 0;
+            this.diaY = 0;
+            this.bind();
+        },
+        bind:function(){
+            var _this = this;
+            this.$target.on('mousedown', function (e) {
+                _this.Down(e)
+                _this.settings.getChange()
+                _this.$target.on('mousemove',function(e){
+                    _this.move(e)
+                _this.$target.on('mouseup',function(){
+                    _this.up()
+                })
+                })
+            })
+        },
+        Down: function (e){
+            this.disY = e.clientY - this.$target.offset().top
+			this.$targetTop = this.$target.offset().top
+        },
+        move:function(e){
+            var T =  e.clientY-this.disY  
+            this.$target.css({top:T})
+        },
+        up:function(){	
+			
+            this.$target.off('mouseup')
+            this.$target.off('mousemove')
+			
+        }
+    }
+  return {
+       init:function(opt){
+           new _drag(opt)
+     }
+    }
+    })()
+    var drag1 = Drag.init({
+              id: $('.box1'),
+               getChange:function(){
+                   this.id.css({background:'black'})
+               }
+    })
+</script>
+
+
+</body>
+</html>

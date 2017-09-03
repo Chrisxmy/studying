@@ -43,10 +43,15 @@
 		margin-top: 20px;
 		visibility: hidden;
 	}
+	.test{
+		height:200px;
+		background:red;
+	}
 
 </style>
 </head>
 <body>
+	<div class=></div>
 <div class="container">
 		<ul class="news ">
 		</ul>
@@ -54,6 +59,16 @@
 </div>
 <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
     <script>
+
+	$('.containter').on('click',function(e){
+           var top =  $(this).offset().top
+		   console.log(top)
+			$('.containter').on('mousemove',function(e){
+
+			})  
+			
+	})
+
 		var pageIndex =0;
 		var isover = false;
 		var isNewsArrive = true;

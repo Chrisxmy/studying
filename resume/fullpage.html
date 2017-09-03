@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href='./fullpage.css'>
+	<link rel='stylesheet' href='./animate.css'>
+	<link rel="stylesheet" href='./reset.css'>
+	 <link rel="stylesheet" href="font2/iconfont.css"><link rel="stylesheet" href="font1/iconfont.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.4/jquery.fullpage.min.css" />
+</head>
+<body>
+	<div id='arrow'><img src='./image/arrow.png'></div>
+<ul id="myMenu">
+	<li data-menuanchor="about" class="active about">
+		 <div class="send">
+             about
+           <div class="arrow"></div>
+        </div>
+		<a href="#about"><span class="icon iconfont">&#xe607;</span></a>
+	</li>
+	<li data-menuanchor="skills" class='skills'>
+		<div class="send">
+             skills
+           <div class="arrow"></div>
+        </div>
+		<a href="#skills"><span class="icon iconfont">&#xe631;</span></a></li>
+	<li data-menuanchor="item" class='item'>
+		<div class="send">
+             item
+           <div class="arrow"></div>
+        </div>
+		<a href="#item"><span class="icon iconfont">&#xe62f;</span></a></li>
+	<li data-menuanchor="contact" class='contact'>
+		<div class="send">
+             contact
+           <div class="arrow"></div>
+        </div>
+		<a href="#contact"><span class="icon iconfont">&#xe630;</span></a></li>
+</ul>
+	<div id="fullpage">
+	<div class="section about">
+		<div class='wrap'>
+         <div class='photo'><img src='./image/photo.jpg'></div>
+		 <h2 class='name'>谢梦扬</h2>
+		 <div class='line'></div>
+		 <p class='intro'>xxxxxxxxxxxxxxxxxxx</pclass>
+		 </div>
+	</div>
+	
+	<div class="section item"></div>
+	<div class="section skills">
+		<div class="slide" data-anchor="slide1"> Slide 1 </div>
+	    <div class="slide" data-anchor="slide2"> Slide 2 </div>
+	    <div class="slide" data-anchor="slide3"> Slide 3 </div>
+	    <div class="slide" data-anchor="slide4"> Slide 4 </div></div>
+	<div class="section contact">Some section</div>
+</div>
+
+
+
+	<script src='../封装组件/jquery.min.js'></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.4/jquery.fullpage.min.js"></script>
+
+<script>
+$(document).ready(function() {
+	$('#fullpage').fullpage({
+		resize:true,
+		anchors:['about','skills','item','contact'],
+		loopHorizontal:false,
+		fixedElements:'#arrow',
+		menu:'#myMenu',
+		//navigation:true,
+		//navigationTooltips:['about','skills','item','contact'],
+		slidesNavigation:true,
+		controlArrows:false,
+	});
+})
+
+function myMenu(){
+	 $('#myMenu li').on('mouseenter',function(){
+	   $(this).children().eq(0).fadeIn('fast','linear')
+})
+     $('#myMenu li').on('mouseleave',function(){
+	   $(this).children().eq(0).fadeOut()
+})
+}
+myMenu()
+
+
+function arrow(){
+   $('#arrow img').animate({bottom:'10px'})
+                   .fadeOut()
+				   .animate({bottom:'0'})
+				   .fadeIn()
+}
+
+setInterval(arrow,500)
+
+
+
+ var $line = $('.about .line')
+ var $intro = $('.about .intro')
+ $line.animate({width:'60%'},800,function(){        
+	$intro.animate({opacity:1,top:'30'})
+ })
+
+
+
+</script>
+</body>
+</html>
