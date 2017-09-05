@@ -1,200 +1,136 @@
-<html lang="en"><head>
-    <meta charset="UTF-8">
-    <meta name = 'viewport' content='width=device-width,user-scalable=no'> 
-    <link rel="stylesheet" href="index.css">
-     <link rel="stylesheet" href="reset.css">
-    <link rel="stylesheet" href="font2/iconfont.css"><link rel="stylesheet" href="font1/iconfont.css">
-    <link rel="stylesheet" href="../FM player/icon/font1/iconfont.css"><link rel="stylesheet" href="font1/iconfont.css">
-    <title>谢梦扬</title>
-    </head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.4/jquery.fullpage.min.css" />
+	<link rel="stylesheet" href='./index.css'>
+	<link rel='stylesheet' href='./animate.css'>
+	<link rel="stylesheet" href='./reset.css'>
+	<link rel="stylesheet" href="font2/iconfont.css"><link rel="stylesheet" href="font1/iconfont.css">
+</head>
 <body>
-<div class="page-wrap">
-    <nav id='nav'>
-      <span class='iconfont icon-wxmeun'>
-    </nav>
-    <div class="aside">
-        <span class='close'>X</span>
-        <img src="image/photo.jpg" class="photo">
-        <span class='name'>谢梦扬</span>
-        <ul class="intro">
-            <li class='about active'><a href="javascript:" ><i class="icon iconfont">&#xe607;</i>About</a></li>
-            <li class='items'><a href="javascript:" ><i class="icon iconfont">&#xe631;</i>Items</a></li>
-            <li class='skills'><a href="javascript:"><i class="icon iconfont">&#xe62f;</i>Skills</a></li>
-            <li  class='goal'><a href="javascript:"><i class="icon iconfont">&#xe630;</i>Goal</a></li>
-        </ul>
-        <div class="footer">
-            <div class="logo">
-                <a href="http://www.jianshu.com/u/6c029be09110" class="book" target='_blank'><i class="icon iconfont">&#xe613;</i></a>
-                <a href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=UmNnYGdiYmFjamtiEiMjfDE9Pw" class='email' target='_blank'><i class="icon iconfont ">&#xe640;</i></a>
-                <a href="https://github.com/Chrisxmy/studying" class="git" target='_blank'><i class="icon iconfont">&#xe7d6;</i></a>
-                <a href="javascript:" class="weibo"><i class="icon iconfont">&#xe601;</i></a>
-            </div>
-            <p class="source">
-                Open source:<a href="https://github.com/Chrisxmy/studying" target="_blank">GitHub</a>
-                <br>
-                <span class="right">© copyright Chris,2017</span>
-            </p>
+	<div id='arrow'><img src='./img/arrow.png'></div>
+<ul id="myMenu">
+	<li data-menuanchor="about" class="active about">
+		 <div class="send">
+             about
+           <div class="arrow"></div>
         </div>
-    </div>
-    <div class="person">
-        <h3>个人信息</h3>
-        <ul>
-        <li><span>姓名:</span>谢梦扬</li>
-        <li> <span>年龄:</span>24</li>
-        <li> <span>求职意向:</span>前端工程师</li>
-        <li> <span>城市:</span>苏州/杭州</li>
-        <li> <span>联系电话:</span>13914003074</li>
-        </ul>
-        <p class='intro'>我是一个对事认真负责，热爱运动,热衷于技术类工作的人。<br/>
-        三观正，待人友善
-对新技术有强烈的兴趣和研究的能力。
-良好的逻辑思维和团队协作能力。</br>
-        自从年前接触到了程序，毅然放弃了以前的工作，</br>
-        通过的自学(看书，视频，博客等)和前辈指点，学习了部分前端相关技术<br/>
-        我现在正在寻找一家公司，希望加入一个技术氛围OK，使人有成就感的互联网公司。
-     </p>      
-    </div>
-    
-    <div id='items'>
-        <h3 class='title'>Items</h3>
-    <div class='itemList clear'>
-    <a href='../FM player/music.html' class='music' target='_blank'><img src='image/music.jpg'> 
-    <h1>Music Player</h1>
-    <p>基于HTML5的音乐播放器,运用技术html,css,js,jQuery,Ajax,实现了专辑分类，播放暂停，音量控制，进度控制，歌词同步等功能</p> 
-    </a>
-    <a href='../Retro games/game.html' class='game' target='_blank'><img src='image/game.jpg'>
-     <h1>Retro game</h1>
-    <p>原生js开发的一个小游戏,运用技术html，css，js</p> 
-    </a>
-    <a href='https://github.com/Chrisxmy/note-websit' class='todo' target='_blank'><img src='image/note.jpg'>
-     <h1>Note</h1>
-    <p>一个便利贴网站,模块化开发方式-webpack,瀑布流布局,发布订阅模式,Express搭建服务器，sqlite3-数据简单的增删改查</p> 
-    </a>
-      <a href='../响应式页面/src/index.html' class='responsive' target='_blank'><img src='image/responsive.jpg'>
-     <h1>Responsive</h1>
-    <p>一个响应式页面,适配多终端,运用技术html,css,js,jQuery</p> 
-    </a>
-    <a href='../一些效果/todolist.html#all' class='note' target='_blank'><img src='image/todo.jpg'>
-     <h1>List application</h1>
-    <p>基于Vue.js的清单应用，入门</p> 
-    </a>
-     <a href='../封装组件/DateSpicker/UIDateSpicker.html' class='dataPicker' target='_blank'><img src='image/dataPicker.jpg'>
-     <h1>DataPicker</h1>
-    <p>一个日历插件,运用技术html,css,js,jQuery</p> 
-    </a>
-      <a href='../轮播插件/solider.html' class='solider' target='_blank'><img src='image/solider.jpg'>
-     <h1>Solider</h1>
-    <p>一个轮播插件,运用技术html,css,js,jQuery</p> 
-    </a>
-   
-</div>
-</div>
-<div id='skills'>
-    <div class='wrap'>
-<div id="ct" style="width: 400px;height:400px;"></div>
-</div>
-<ul class='skillList'>
-    <li>熟悉HTML,CSS,对W3C标准和标签语义化有一定理解，掌握常见的布局方式,可精准还原设计，像素级重构</li>
-    <li>了解响应式开发,flex,Rem,熟悉UI框架Bootstrap</li>
-    <li>初步了解HTML5新标签和CSS3样式动画，能实现常见CSS3动画效果</li>
-    <li>熟练使用git，掌握css预处理器less</li>
-    <li>对JaveScript有持续深入理解，掌握面向对象的编程思想,对es6语法有一定了解</li>
-    <li>熟悉Ajax,jQery,JSON等前端技术，了解前后端交互，能手写jQuery组件</li>   
-    <li>了解前端模块化，工程化，熟悉npm webpack require.js glup等前端工具,对前端性能优化有一定理解</li>
-    <li>了解http协议(HTTP 报文、URI、缓存控制、状态码等相关知识),掌握浏览器调试工具,可快速定位BUG</li>
+		<a href="#about"><span class="icon iconfont">&#xe607;</span></a>
+	</li>
+	<li data-menuanchor="skills" class='skills'>
+		<div class="send">
+             skills
+           <div class="arrow"></div>
+        </div>
+		<a href="#skills"><span class="icon iconfont">&#xe631;</span></a></li>
+	<li data-menuanchor="item" class='item'>
+		<div class="send">
+             item
+           <div class="arrow"></div>
+        </div>
+		<a href="#item"><span class="icon iconfont">&#xe62f;</span></a></li>
+	<li data-menuanchor="contact" class='contact'>
+		<div class="send">
+             contact
+           <div class="arrow"></div>
+        </div>
+		<a href="#contact"><span class="icon iconfont">&#xe630;</span></a></li>
 </ul>
+	<div id="fullpage">
+	<div class="section about">		
+		<div class="container demo" position='absolute'>
+			<div class="content">
+                <div id="large-header" class="large-header">
+                    <canvas id="demo-canvas"></canvas>
+                </div>
+               
+            </div>
+		</div><!-- /container --> 
+		<div class='wrap'>
+         <div class='photo'><img src='./img/photo.jpg'></div>
+		 <h2 class='name'>谢梦扬</h2>
+		 <div class='line'></div>
+		 <div class='intro'>
+		 <p class='item1'>xxxxxxxxxxxxxxxxxxx</p>
+		 <p class='item2'>xxxxxxxxxxxxxxxxxxx</p>
+		 <p class='item3'>xxxxxxxxxxxxxxxxxxx</p>
+		 </div>
+		 </div>
+	</div>
+	
+	<div class="section item"></div>
+	<div class="section skills">
+		<div class="slide" data-anchor="slide1"> Slide 1 </div>
+	    <div class="slide" data-anchor="slide2"> Slide 2 </div>
+	    <div class="slide" data-anchor="slide3"> Slide 3 </div>
+	    <div class="slide" data-anchor="slide4"> Slide 4 </div></div>
+	<div class="section contact">Some section</div>
+</div>
 
-</div>
-</div>
-<script src='../封装组件/jquery.min.js'></script>
-<script src='./echarts.min.js'></script>
+
+
+	<script src='./jquery.min.js'></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.4/jquery.fullpage.min.js"></script>
+	<script src="js/TweenLite.min.js"></script>
+    <script src="js/EasePack.min.js"></script>
+    <script src="js/demo.js"></script> 
 
 <script>
+$(document).ready(function() {
 
-var $items = $('.aside .items'),
-    $person = $('.aside .about'),
-    $skills =  $('.aside .skills');
+	$('#fullpage').fullpage({
+		resize:true,
+		anchors:['about','skills','item','contact'],
+		loopHorizontal:false,
+		fixedElements:'#arrow',
+		menu:'#myMenu',
+		//navigation:true,
+		//navigationTooltips:['about','skills','item','contact'],
+		slidesNavigation:true,
+		controlArrows:false,
+	});
 
-    var $itemTop = $('#items').offset().top,
-    $personTop = $('.person').offset().top,
-    $skillsTop = $('#skills').offset().top;
 
-
-$items.on('click',function(){
-    $("html,body").animate({scrollTop:$itemTop},500)   
+function myMenu(){
+	var $myMenu = $('#myMenu li')
+	 $myMenu.on('mouseenter',function(){
+	   $(this).children().eq(0).fadeIn('fast','linear')
 })
-$person.on('click',function(){
-    $("html,body").animate({scrollTop:$personTop},500)
+      $myMenu.on('mouseleave',function(){
+	   $(this).children().eq(0).fadeOut()
 })
-$skills.on('click',function(){
-    $("html,body").animate({scrollTop:$skillsTop},500)   
-})
+}
+myMenu()
 
 
-$(window).on('scroll',function(){
-    if($(this).scrollTop() < $itemTop/2){
-        $person.siblings().css({background:0})
-        $person.css({background:'#87b0a5'})
+function arrow(){
+   $('#arrow img').animate({bottom:'10px'})
+                   .fadeOut()
+				   .animate({bottom:'0'})
+				   .fadeIn()
+}
+setInterval(arrow,500)
 
-    }else if( $itemTop/2 <= $(this).scrollTop() && $(this).scrollTop() <  1200){
-        $items.siblings().css({background:0})
-        $items.css({background:'#bbb'});
-    }else if( 1200 <= $(this).scrollTop()){  
-        $skills.siblings().css({background:0})
-        $skills.css({background:'#109085'})
-    
-    }
-})
 
- var myCharts= echarts.init(document.querySelector('#ct'))
- option =  {
-     title : {
-                text: 'Skills',
-                x:'center'
-        },
 
-    series : [
-        {
-            name: '访问来源',
-            type: 'pie',
-            radius: '55%',
-            roseType: 'angle',
-            data:[
-                {value:235, name:'HTML&HTML5'},
-                {value:274, name:'CSS&CSS3'},
-                {value:310, name:'JS'},
-                {value:335, name:'jQuery'},
-                {value:200, name:'less'},
-                {value:200, name:'webpack'}
-            ]
-        }
-    ],
-    itemStyle: {
-    normal: {
-        // 阴影的大小
-        shadowBlur: 400,
-        // 阴影水平方向上的偏移
-        shadowOffsetX: 0,
-        // 阴影垂直方向上的偏移
-        shadowOffsetY: 0,
-        // 阴影颜色
-        shadowColor: 'rgba(0, 0, 0, 0.7)'
-    }
-},
- 
+ var $line = $('.about .line')
+ var $intro = $('.about .intro p')
+ $line.animate({width:'60%'},1500,function(){   
+	    $('.about .name').addClass('nameAnimate')     
+	    textLeft()
+ })
+
+ function textLeft(){
+        $intro.eq(0).animate({right:'50%',opacity:1},200)
+        $intro.eq(1).animate({right:'50%',opacity:1},400)
+        $intro.eq(2).animate({right:'50%',opacity:1},500)	
  }
-    myCharts.setOption(option)
-         
-$('#nav span').on('click',function(){
-    $('.aside').css({visibility: 'visible'})
-})
-$('.aside .close').on('click',function(){
-    $('.aside').css({visibility: 'hidden'})
-    $(window).on('resize',function(){
-         $(window).width()> 768 ? $('.aside').css({visibility: 'visible'}) :null
-    })
-})
 
+
+
+})
 
 </script>
 </body>
